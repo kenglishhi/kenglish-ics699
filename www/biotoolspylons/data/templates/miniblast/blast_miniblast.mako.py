@@ -3,9 +3,9 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 4
-_modified_time = 1234157076.1715469
-_template_filename='/home/kenglish/workspace/kenglish-ics699/www/biotoolspylons/biotoolspylons/templates/fastas/index_fasta.mako'
-_template_uri='/fastas/index_fasta.mako'
+_modified_time = 1234159758.3631909
+_template_filename='/home/kenglish/workspace/kenglish-ics699/www/biotoolspylons/biotoolspylons/templates/miniblast/blast_miniblast.mako'
+_template_uri='/miniblast/blast_miniblast.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding=None
 _exports = ['head_tags']
@@ -26,24 +26,20 @@ def render_body(context,**pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        h = context.get('h', UNDEFINED)
         c = context.get('c', UNDEFINED)
         __M_writer = context.writer()
         # SOURCE LINE 1
         __M_writer(u'\n\n')
         # SOURCE LINE 5
-        __M_writer(u'\n\n<h1>University of Hawaii :: BioTools in Pylons</h1>\n<ul>\n<li> ')
-        # SOURCE LINE 9
-        __M_writer(unicode(h.rails.link_to("Upload Fasta File", h.rails.url_for(action="new") ) ))
-        __M_writer(u'\n</ul>\nFiles: \n<ul>\n')
-        # SOURCE LINE 13
-        for item in c.fasta_files:
-            # SOURCE LINE 14
-            __M_writer(u'\t<li> ')
-            __M_writer(unicode(item))
-            __M_writer(u' \n')
-        # SOURCE LINE 16
-        __M_writer(u'</ul>\n\n\n\n')
+        __M_writer(u'\n\n<h1>Blast Results</h1>\n\n\n<ul> \n')
+        # SOURCE LINE 11
+        for record in c.results:
+            # SOURCE LINE 12
+            __M_writer(u'    <li> ')
+            __M_writer(unicode(record.query))
+            __M_writer(u'\n')
+        # SOURCE LINE 14
+        __M_writer(u'\n</ul> \n')
         return ''
     finally:
         context.caller_stack._pop_frame()

@@ -5,6 +5,7 @@ from biotoolspylons.lib.base import *
 import os, re, shutil 
 import biotoolspylons.lib.helpers as h
 import Bio.Fasta
+from biotoolspylons.model import fastafile 
 
 
 permanent_store = '/home/kenglish/downloads/uploads/'
@@ -19,11 +20,11 @@ class FastasController(BaseController):
 
     def index(self, format='html'):
         """GET /fastas: All items in the collection."""
-        c.fasta_files = []
-        for filename in os.listdir(permanent_store):
-            if re.compile('.*fasta$').match(filename):
-                c.fasta_files.append( filename ) 
-        c.links = [ 'James', 'Ben', 'Philip' ]
+        c.fasta_files =  fastafile.get_fasta_files()  
+#        for filename in os.listdir(permanent_store):
+#            if re.compile('.*fasta$').match(filename):
+#                c.fasta_files.append( filename ) 
+#        c.links = [ 'James', 'Ben', 'Philip' ]
         return render('/fastas/index_fasta.mako')
 
     def create(self):
@@ -52,7 +53,7 @@ class FastasController(BaseController):
             seq = it.next()
 
         handle.close()
-        self.formatdb(fasta_file.name) 
+        fastafile.formatdb(fasta_file.name) 
 
         log.debug('Hello Kenglish' )
         print "Hello Kenglish" 
@@ -61,11 +62,11 @@ class FastasController(BaseController):
         return 'Successfully uploaded: %s, description: %s, <br /> results: <br /> %s ' % \
             (uploadfile.filename, request.POST['description'], output_string)
 
-    def formatdb(self,fasta_file):
-        db_name = fasta_file
-        cmd = "formatdb -i %s -p F -o F" % fasta_file
-        output = os.system(cmd)
-        print "output: %s " % output
+#    def formatdb(self,fasta_file):
+#        db_name = fasta_file
+#        cmd = "formatdb -i %s -p F -o F" % fasta_file
+#        output = os.system(cmd)
+#        print "output: %s " % output
 
 
 
@@ -103,6 +104,3 @@ class FastasController(BaseController):
         """GET /fastas/id;edit: Form to edit an existing item."""
         # url_for('edit_fasta', id=ID)
         pass
-
-
-

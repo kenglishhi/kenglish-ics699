@@ -6,7 +6,7 @@
 
 
 
-<h1>My Controller</h1>
+<h1>Upload Fasta</h1>
 
 <p>Select a file from your filesystem to upload</p>
 

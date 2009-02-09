@@ -11,8 +11,10 @@
   <div id="banner">
     <div id="banner-message">
        <ul id="secondary-nav">
-          Bio Tools with Pylons | ${h.rails.link_to("Fasta Files", h.rails.url_for(controller='fastas', action="index") ) }  |
-                ${h.rails.link_to("Upload Fasta File", h.rails.url_for(controller='fastas', action="new") ) }  
+          Bio Tools with Pylons 
+          | ${h.rails.link_to("Fasta Files", h.rails.url_for(controller='fastas', action="index") ) }  
+          | ${h.rails.link_to("Upload Fasta File", h.rails.url_for(controller='fastas', action="new") ) }  
+          | ${h.rails.link_to("Blast Files", h.rails.url_for(controller='miniblast') ) }  
             <br/>
     <span>
        <a href="/notifications"><span id="notifications_monitor"> 

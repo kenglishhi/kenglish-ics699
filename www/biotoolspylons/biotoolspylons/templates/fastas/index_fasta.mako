@@ -4,11 +4,9 @@
   <!-- add some head tags here -->
 </%def>
 
-
-
 <h1>University of Hawaii :: BioTools in Pylons</h1>
 <ul>
-<li>${h.rails.link_to("Upload Fasta File", h.rails.url_for(action="new") ) }
+<li> ${h.rails.link_to("Upload Fasta File", h.rails.url_for(action="new") ) }
 </ul>
 Files: 
 <ul>
@@ -18,5 +16,4 @@ Files:
 </ul>
 
 
-<p>Lorum ipsum dolor yadda yadda</p>
 
