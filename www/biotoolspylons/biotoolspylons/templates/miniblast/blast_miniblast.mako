@@ -8,7 +8,7 @@
 
 
 <ul> 
-% for record in c.results:
+% for record in c.blast_results:
     <li> ${record.query}
 % endfor
 
