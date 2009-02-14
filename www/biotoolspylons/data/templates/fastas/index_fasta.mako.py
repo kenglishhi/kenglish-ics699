@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 4
-_modified_time = 1234157076.1715469
+_modified_time = 1234421352.0677459
 _template_filename='/home/kenglish/workspace/kenglish-ics699/www/biotoolspylons/biotoolspylons/templates/fastas/index_fasta.mako'
 _template_uri='/fastas/index_fasta.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -34,7 +34,7 @@ def render_body(context,**pageargs):
         # SOURCE LINE 5
         __M_writer(u'\n\n<h1>University of Hawaii :: BioTools in Pylons</h1>\n<ul>\n<li> ')
         # SOURCE LINE 9
-        __M_writer(unicode(h.rails.link_to("Upload Fasta File", h.rails.url_for(action="new") ) ))
+        __M_writer(unicode(h.rails.link_to("Upload Fasta File", h.url_for(action="new") ) ))
         __M_writer(u'\n</ul>\nFiles: \n<ul>\n')
         # SOURCE LINE 13
         for item in c.fasta_files:

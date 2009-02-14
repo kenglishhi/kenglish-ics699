@@ -10,7 +10,7 @@
 
 <p>Select a file from your filesystem to upload</p>
 
-${h.rails.form(h.rails.url(action='create' ), method='POST',multipart=True)}
+${h.rails.form(h.url_for(action='create' ), method='POST',multipart=True)}
 Upload file: ${h.rails.file_field('uploadfile')} <br />
 ${h.rails.submit('Submit')}<br /> 
 </form>

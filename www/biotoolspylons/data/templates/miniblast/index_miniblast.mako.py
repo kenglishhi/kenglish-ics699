@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 4
-_modified_time = 1234159629.6840401
+_modified_time = 1234423240.6068721
 _template_filename='/home/kenglish/workspace/kenglish-ics699/www/biotoolspylons/biotoolspylons/templates/miniblast/index_miniblast.mako'
 _template_uri='/miniblast/index_miniblast.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -35,17 +35,30 @@ def render_body(context,**pageargs):
         __M_writer(u'\n\n<h1>Blast 2 files</h1>\n\n<p>Select 2 file to blast</p>\n\n')
         # SOURCE LINE 11
         __M_writer(unicode(h.rails.form(h.rails.url(action='blast' ), method='POST',multipart=True)))
-        __M_writer(u'\nFile1: ')
+        __M_writer(u'\n')
         # SOURCE LINE 12
+        flash_message = h.flash.pop_message()  
+        
+        __M_locals.update(__M_dict_builtin([(__M_key, __M_locals_builtin()[__M_key]) for __M_key in ['flash_message'] if __M_key in __M_locals_builtin()]))
+        __M_writer(u'\n')
+        # SOURCE LINE 13
+        if flash_message:
+            # SOURCE LINE 14
+            __M_writer(u'<div id="flash-message">')
+            __M_writer(filters.html_escape(unicode(flash_message )))
+            __M_writer(u'</div>\n')
+        # SOURCE LINE 16
+        __M_writer(u'\nFile1: ')
+        # SOURCE LINE 17
         __M_writer(unicode( h.rails.select('file1' , h.options_for_select( c.fasta_files ) )  ))
         __M_writer(u' <br />\nFile2: ')
-        # SOURCE LINE 13
+        # SOURCE LINE 18
         __M_writer(unicode( h.rails.select('file2' , h.options_for_select( c.fasta_files ) )  ))
         __M_writer(u' <br />\n\n')
-        # SOURCE LINE 15
+        # SOURCE LINE 20
         __M_writer(unicode(h.rails.submit('Submit')))
         __M_writer(u'<br />\n</form>\n')
-        # SOURCE LINE 17
+        # SOURCE LINE 22
         __M_writer(unicode(h.rails.end_form()))
         __M_writer(u'\n\n')
         return ''

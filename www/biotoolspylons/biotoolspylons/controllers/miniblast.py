@@ -6,8 +6,6 @@ import Bio.Fasta
 from Bio.Blast import NCBIStandalone
 from Bio.Blast import NCBIXML
 
-
-
 log = logging.getLogger(__name__)
 
 class MiniblastController(BaseController):
@@ -21,8 +19,15 @@ class MiniblastController(BaseController):
     def blast(self):
         blast_exe =  "/usr/bin/blastall"
         blast_program =  "blastn"
+        if  request.POST['file1'] == request.POST['file2'] :
+            session['flash'] = 'Files should not be identical successfully updated.'
+            session.save()
+            redirect_to(action='index',file1=request.POST['file1'],
+            file2=request.POST['file2'], )
+
         blast_db = fastafile.PERMANENT_STORE + request.POST['file1'] 
         blast_file = fastafile.PERMANENT_STORE + request.POST['file2'] 
+
         blast_out, error_handle = NCBIStandalone.blastall(blast_exe, blast_program, blast_db, blast_file)
         records = NCBIXML.parse(blast_out)
         c.results  = [] 
@@ -33,5 +38,3 @@ class MiniblastController(BaseController):
             except StopIteration:
                 break
         return render('/miniblast/blast_miniblast.mako')
-
-
