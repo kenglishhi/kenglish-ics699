@@ -1,0 +1,2 @@
+recursive-include bio1/public *
+recursive-include bio1/templates *
