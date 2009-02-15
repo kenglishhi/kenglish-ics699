@@ -11,6 +11,7 @@ from webhelpers.html.tools import *
 from webhelpers.util import *
 from webhelpers.rails.wrapped import *
 from pylons.controllers.util import url_for
+from os.path import basename
 
 class Flash(object):
     def __call__(self, message):

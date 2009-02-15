@@ -7,9 +7,18 @@
 <h1>Blast Results</h1>
 
 
-<ul> 
+<table border=1> 
+    <tr> 
+        <th>Database</th>
+	    <th>Query</th>
+	    <th>Query Length</th>
+    </tr> 
 % for record in c.blast_results:
-    <li> ${record.query}
+    <tr> <td>${h.basename(record.database)}</td>
+         <td> ${record.query} </td>
+         <td> ${record.query_letters} </td>
+    </tr> 
+    
 % endfor
 
-</ul> 
+</table> 

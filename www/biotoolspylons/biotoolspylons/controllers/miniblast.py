@@ -22,7 +22,7 @@ class MiniblastController(BaseController):
         blast_exe =  "/usr/bin/blastall"
         blast_program =  "blastn"
 
-        if  request.POST['fasta_filename1'] == request.POST['fasta_filename2'] :
+        if  False and request.POST['fasta_filename1'] == request.POST['fasta_filename2'] :
 
             session['flash'] = 'Files should not be identical successfully updated.'
             session.save()
