@@ -269,3 +269,8 @@ background-color:inherit;
     color:black;
     font-weight:bold;
 }
+table.blast-results th {
+	font-weight: bold;
+	text-align:left;
+		
+}

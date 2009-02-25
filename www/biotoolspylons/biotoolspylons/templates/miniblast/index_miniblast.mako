@@ -18,6 +18,7 @@ ${h.rails.form(h.rails.url(action='blast' ), method='POST',multipart=True)}
 Query File: ${ h.rails.select('fasta_filename1' , h.options_for_select( c.fasta_files ) )  } <br />
 DB File: ${ h.rails.select('fasta_filename2' , h.options_for_select( c.fasta_files ) )  } <br />
 
+
 ${h.rails.submit('Submit')}<br />
 </form>
 ${h.rails.end_form()}

@@ -17,9 +17,11 @@ def make_map():
     map.connect('error/:action/:id', controller='error')
 
     # CUSTOM ROUTES HERE
+    map.resource('flexfasta', 'flexfastas')
 
     map.connect('', controller='fastas', action='index') 
     map.connect(':controller/:action/:id')
     map.connect('*url', controller='template', action='view')
+
 
     return map

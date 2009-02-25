@@ -1,4 +1,5 @@
 import os,re
+from biotoolspylons.model.pathinfo import *
 
 PERMANENT_STORE = '/home/kenglish/downloads/uploads/'
 
@@ -13,6 +14,7 @@ def get_fasta_files():
     fasta_files = []
     for filename in os.listdir(PERMANENT_STORE):
         if re.compile('.*fasta$').match(filename):
-            fasta_files.append( filename ) 
+            fasta_files.append(PathInfo(PERMANENT_STORE + filename))
+    fasta_files.sort()
     return fasta_files 
 

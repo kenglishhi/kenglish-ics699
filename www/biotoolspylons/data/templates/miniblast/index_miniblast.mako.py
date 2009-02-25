@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 4
-_modified_time = 1234648491.37446
+_modified_time = 1234917617.0627911
 _template_filename='/home/kenglish/workspace/kenglish-ics699/www/biotoolspylons/biotoolspylons/templates/miniblast/index_miniblast.mako'
 _template_uri='/miniblast/index_miniblast.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -54,11 +54,11 @@ def render_body(context,**pageargs):
         __M_writer(u' <br />\nDB File: ')
         # SOURCE LINE 19
         __M_writer(unicode( h.rails.select('fasta_filename2' , h.options_for_select( c.fasta_files ) )  ))
-        __M_writer(u' <br />\n\n')
-        # SOURCE LINE 21
+        __M_writer(u' <br />\n\n\n')
+        # SOURCE LINE 22
         __M_writer(unicode(h.rails.submit('Submit')))
         __M_writer(u'<br />\n</form>\n')
-        # SOURCE LINE 23
+        # SOURCE LINE 24
         __M_writer(unicode(h.rails.end_form()))
         __M_writer(u'\n\n')
         return ''

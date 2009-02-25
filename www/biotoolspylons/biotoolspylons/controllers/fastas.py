@@ -6,6 +6,7 @@ import os, re, shutil
 import biotoolspylons.lib.helpers as h
 import Bio.Fasta
 from biotoolspylons.model import fastafile 
+from biotoolspylons.model import pathinfo
 
 
 permanent_store = '/home/kenglish/downloads/uploads/'
@@ -68,8 +69,19 @@ class FastasController(BaseController):
 #        output = os.system(cmd)
 #        print "output: %s " % output
 
+    def upload(self):
+        message = "They called file upload " + request.POST["Filedata"].filename
+        log.debug(message)
+        uploadfile = request.POST["Filedata"]
+        fasta_file = open(os.path.join(permanent_store,
+                                           uploadfile.filename.lstrip(os.sep)),
+                                           'w')
 
-
+        shutil.copyfileobj(uploadfile.file, fasta_file)    
+        uploadfile.file.close()
+        fasta_file.close()
+        fastafile.formatdb(fasta_file.name)
+        
     def new(self, format='html'):
         """GET /fastas/new: Form to create a new item."""
         # url_for('new_fasta')
