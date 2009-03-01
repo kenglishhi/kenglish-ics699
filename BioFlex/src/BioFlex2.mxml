@@ -2,9 +2,7 @@
 <!-- DataGrid control example. -->
 <mx:Application 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	creationComplete="fastaRequest.send()" 
-	
-	xmlns:bioflex="*">
+	creationComplete="fastaRequest.send()" xmlns:bioflex="*">
 	<mx:Script>
 			import mx.rpc.events.ResultEvent;
 			
@@ -16,8 +14,7 @@
 				fullXML = evt.result.fastafile;
 				message.text = fastaRequest.url;
 			}
-	
-	
+			
 	</mx:Script>
     <mx:HTTPService 
         id="fastaRequest" 
@@ -40,7 +37,7 @@
             </mx:columns>
         </mx:DataGrid>
 
-		<bioflex:UploadFastaFile label="test me"/>
+		
 
           <mx:Label id="message" text="HI KEVIN" />
     </mx:Panel>

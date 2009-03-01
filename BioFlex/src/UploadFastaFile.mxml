@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form width="100%" height="100%" xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()" >
+    <mx:Script>
+        <![CDATA[
+            private var fileRef:FileReference;
+            private const FILE_UPLOAD_URL:String = "http://127.0.0.1:5000/fastas/upload";
+
+            private function init():void {
+                fileRef = new FileReference();
+                fileRef.addEventListener(Event.SELECT, fileRef_select);
+                fileRef.addEventListener(ProgressEvent.PROGRESS, fileRef_progress);
+                fileRef.addEventListener(Event.COMPLETE, fileRef_complete);
+            }
+            private function upload():void {
+ 				try {
+                    message.text = "Uploading file size (bytes): " + numberFormatter.format(fileRef.size);
+                    fileRef.upload(new URLRequest(FILE_UPLOAD_URL));
+                } catch (err:Error) {
+                    message.text = "ERROR: zero-byte file";
+                }
+ 				
+            }
+            private function browseAndUpload():void {
+                fileRef.browse();
+                message.text = "";
+            }
+            private function browse():void {
+                fileRef.browse();
+                message.text = "";
+            }
+            
+            private function fileRef_select(evt:Event):void {
+                try {
+                	
+                    filename.text = fileRef.name;
+                } catch (err:Error) {
+                    message.text = "ERROR: zero-byte file";
+                }
+            }
+            private function fileRef_progress(evt:ProgressEvent):void {
+                message.text = "Uploading file size (bytes): "
+                progressBar.visible = true;
+            }
+
+            private function fileRef_complete(evt:Event):void {
+                progressBar.visible = false;
+				message.text = "Uploaded  " + fileRef.name;
+            }            
+        ]]>
+    </mx:Script>
+    <mx:NumberFormatter id="numberFormatter" />        
+	<mx:FormItem label="Name">
+    	<mx:TextInput width="250" id="filename"/>
+    	<mx:Button label="Browse"  click="browse();" />
+    </mx:FormItem>
+    <mx:FormItem >
+		<mx:Button  x="128" y="50" label="Upload" click="upload();" />
+	</mx:FormItem>
+	<mx:Label x="54" y="75" id="message" />    	    
+	<mx:ProgressBar x="54" y="100" id="progressBar"
+            indeterminate="true"
+            visible="false" />
+</mx:Form>
