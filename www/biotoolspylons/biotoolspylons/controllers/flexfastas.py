@@ -17,32 +17,28 @@ class FlexfastasController(BaseController):
     def index(self, format='html'):
         """GET /flexfastas: All items in the collection."""
         # url_for('flexfastas')
+        message = "They called index on flexfastas"
+        log.debug(message)
         response.headers['Content-type'] = "text/xml" 
         c.fasta_files =  fastafile.get_fasta_files() 
         return render('/flexfastas/index_flexfasta.xml.mako')
-        return """\
-<?xml version="1.0" encoding="UTF-8"?>
-<fastafiles>
-  <fastafile>
-    <filename>EST_Clade_A_1.fasta</filename>
-  </fastafile>
-  <fastafile>
-    <filename>EST_Clade_A_5.fasta</filename>
-  </fastafile>
-  <fastafile>
-    <filename>EST_Clade_C_3.fasta</filename>
-  </fastafile>
-  <fastafile>
-    <filename>EST_Clade_A.fasta</filename>        
-  </fastafile>
-</fastafiles>
-"""
 
 
     def create(self):
         """POST /flexfastas: Create a new item."""
         # url_for('flexfastas')
-        pass
+        message = "They called file upload " + request.POST["Filedata"].filename
+        log.debug(message)
+        uploadfile = request.POST["Filedata"]
+        fasta_file = open(os.path.join(permanent_store,
+                                           uploadfile.filename.lstrip(os.sep)),
+                                           'w')
+
+        shutil.copyfileobj(uploadfile.file, fasta_file)    
+        uploadfile.file.close()
+        fasta_file.close()
+        fastafile.formatdb(fasta_file.name)
+
 
     def new(self, format='html'):
         """GET /flexfastas/new: Form to create a new item."""

@@ -10,6 +10,7 @@
   </compiler>
   <applications>
     <application path="BioFlex.mxml"/>
+    <application path="BioFlex2.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

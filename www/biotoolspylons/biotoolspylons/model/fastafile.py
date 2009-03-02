@@ -1,9 +1,9 @@
 import os,re
 import pyxslt.serialize
 from biotoolspylons.model.pathinfo import *
+from Bio import SeqIO
 
-
-PERMANENT_STORE = '/home/kenglish/downloads/uploads/'
+PERMANENT_STORE = '/home/kenglish/Data/uploads/'
 
 def formatdb(fasta_file):
 
@@ -23,6 +23,7 @@ def get_fasta_files():
     
 
 class FastaFile(PathInfo):
+
     def to_xml(self): 
         return pyxslt.serialize.toString(prettyPrintXml=True, fastafile=self)
 
@@ -36,3 +37,13 @@ class FastaFile(PathInfo):
                 count = count + 1
         file.close
         return count
+
+    def get_sequences(self):
+        try: self.sequences
+        except AttributeError:
+            self.sequences = [] 
+            handle = open(self.path)
+            for seq_record in SeqIO.parse(handle, "fasta") :
+                self.sequences.append(seq_record) 
+            handle.close()
+        return self.sequences
