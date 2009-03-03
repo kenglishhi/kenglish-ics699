@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<mx:Panel title="VBox Container Example" height="75%" width="75%" 
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10">
+        
+        
+<mx:VBox borderStyle="solid">
+	<mx:HBox width="100%" height="300" label="Label for my HBox" borderStyle="solid">
+	<mx:VBox width="400" height="300" verticalGap="5" borderStyle="solid" label="Label for my VBox"> 
+		<mx:Form id="form1">
+		<mx:Label text="Enter accession number, gi, or FASTA sequence"/>		
+        <mx:TextArea id="query" width="350" height="80" />
+        </mx:Form>
+   </mx:VBox>
+   
+   <mx:VBox width="400" height="300" verticalGap="5" borderStyle="solid"> 
+    <mx:Form id="form2">
+     	<mx:FormHeading label="Query subrange"/>
+        <mx:FormItem label="From">
+         	<mx:TextInput id="from" />
+         </mx:FormItem>
+         <mx:FormItem label="To">
+         	<mx:TextInput id="to" />
+         </mx:FormItem> 
+         </mx:Form>      
+  	</mx:VBox>
+	</mx:HBox>
+	
+</mx:VBox>
+</mx:Panel>
+</mx:Application>
