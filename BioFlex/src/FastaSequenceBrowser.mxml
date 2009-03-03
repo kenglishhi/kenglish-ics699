@@ -1,4 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<?xml version="1.0" encoding="utf-8"?>	
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="fastaRequest.send()">
+
+	    <mx:Script>
+        <![CDATA[
+			import mx.rpc.events.ResultEvent;
+			[Bindable]
+			private var fullXML:XMLList;
+			
+            [Bindable]
+            public var FastaFilesXml: XMLList;
+            [Bindable]
+        	public var FastaFilenamesXml: XMLList;
+            [Bindable]
+            public var selectedItem:Object;
+            
+			private function contentHandler(evt:ResultEvent):void{
+				FastaFilesXml = evt.result.fastafile;
+				FastaFilenamesXml = evt.result.fastafile.filename;
+			}   
+			private function setSelectedItem():void {
+				selectedItem = fastaFileComboBox.selectedItem;	
+			}
+			
+        ]]>
+    </mx:Script>
+    <mx:XMLList id="statesXMLList">
+    
+        <state abbrev="AL" name="Alabama" />
+        <state abbrev="AK" name="Alaska" />
+        <state abbrev="AZ" name="Arizona" />
+        <state abbrev="AR" name="Arkansas" />
+        <state abbrev="CA" name="California" />
+        <state abbrev="CO" name="Colorado" />
+        <state abbrev="CT" name="Connecticut" />
+    </mx:XMLList>    
+    <mx:HTTPService 
+        id="fastaRequest" 
+        url="http://localhost:5000/flexfastas" 
+    	result="contentHandler(event)" resultFormat="e4x"
+        useProxy="false" />
+    <mx:Panel title="ComboBox Control Example" 
+        height="75%" width="75%" layout="horizontal"
+        paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+
+    <mx:VDividedBox width="100%" height="100%" verticalGap="5" 
+        paddingBottom="5" paddingLeft="5" paddingRight="5">
+        
+	<mx:ComboBox id="fastaFileComboBox"
+        	prompt="Please select a File..." 
+        	dataProvider="{FastaFilenamesXml}" 
+        	width="150" 
+            close="setSelectedItem()" 
+            />
+    <mx:VBox width="250">
+    	<mx:Text  width="200" color="blue" text="Select a type of credit card."/>
+        <mx:Label text="You selected: { selectedItem || ''}"/>
+    </mx:VBox>         
+	</mx:VDividedBox>
 	
+
+    </mx:Panel>  
 </mx:Application>

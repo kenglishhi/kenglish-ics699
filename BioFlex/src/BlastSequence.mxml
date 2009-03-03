@@ -1,4 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+
+
+<mx:Panel title="NCBI/ BLAST/ blastn suite " height="75%" width="75%" 
+        paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10" backgroundColor="#D3DFF5" >
+	<mx:Panel title="Enter Query Sequence" width="75%" paddingTop="5" paddingLeft="5" paddingRight="5" paddingBottom="5" backgroundColor="#D3DFF5">
+<mx:VBox>
+	<mx:HBox>
+		<mx:VBox>
+			<mx:Label text="Enter accession number, gi, or FASTA sequence"/>		
+        	<mx:TextArea id="query" width="350" height="80" />	
+		</mx:VBox>
+		<mx:VBox>
+     	<mx:Label text="Query subrange" />    
+     	<mx:Form>
+     		<mx:FormItem label="from">
+     			<mx:TextInput id="from"/>
+     		</mx:FormItem>
+     		<mx:FormItem label="to">
+     			<mx:TextInput id="to"/>
+     		</mx:FormItem>     		
+     	</mx:Form>
+    </mx:VBox>
+	</mx:HBox>
+	<mx:VBox>
+	<mx:Form>
+     		<mx:FormItem label="Or, upload file">
+     			<mx:TextInput id="file"/>
+     		</mx:FormItem>
+     		<mx:FormItem label="Job Title">
+     			<mx:TextInput id="job_title"/>
+     		</mx:FormItem>     		
+     	</mx:Form>
+	</mx:VBox>
+</mx:VBox>	
+	</mx:Panel>
+	<mx:Panel title="Choose Search Set" width="75%">
+	<mx:Form>
+     		<mx:FormItem label="Database">
+     			<mx:ComboBox id='fastadb'>
+     				
+     			</mx:ComboBox>
+     		</mx:FormItem>
+     		<mx:FormItem label="Job Title">
+     		</mx:FormItem>     		
+     	</mx:Form>
 	
+	</mx:Panel>
+	<mx:Panel title="Program Selection" width="75%">
+	
+	
+	</mx:Panel>	
+	
+</mx:Panel>
+
 </mx:Application>
